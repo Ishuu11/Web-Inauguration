@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Techela</title>
+<!-- Favicons ================================================== -->
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+
+<!-- Stylesheet
+    ================================================== -->
+<link rel="stylesheet" type="text/css"  href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700,900,300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="js/modernizr.custom.js"></script>
+
+</head>
+<body>
+<div id="preloader">
+  <div id="status"> <img src="img/preloader.gif" height="64" width="64" alt=""> </div>
+</div>
+<!-- Header -->
+<header id="t123" class="text-center" name="home">
+  <div class="intro-text">
+    <h1 id="t1234" class="page-scroll wow fadeInUp" data-wow-delay="900ms">Get Ready <strong><span class="color">for TECHELA</span></strong></h1>
+    <p id="instruction" class="page-scroll wow fadeInUp" data-wow-delay="800ms">By CS-IT dept</p>
+    <p  id="countdown" style="font-size:80px; color:pink"></p>
+    <input id="mainbutton" type="image" src="/img/ReadyButton.png" style="height:100px; width:300px;" class="btn btn-default btn-lg page-scroll wow fadeInUp" data-wow-delay="3500ms" onclick="playVid()"/> </div>
+</header>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="/kaizend/test/js/jquery.min.js"></script> 
+<script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script type="text/javascript" src="js/bootstrap.js"></script> 
+<script type="text/javascript" src="js/SmoothScroll.js"></script> 
+<script type="text/javascript" src="js/wow.min.js"></script> 
+<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script> 
+<script type="text/javascript" src="js/jquery.isotope.js"></script> 
+<script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
+<script type="text/javascript" src="js/contact_me.js"></script> 
+<script type="text/javascript" src="js/owl.carousel.js"></script> 
+
+<!-- Javascripts
+    ================================================== --> 
+<script type="text/javascript" src="js/main.js"></script>
+<audio id="myVideo" src="/nwood.mp3"
+			type="audio/mpeg" preload="auto">
+  Your browser does not support HTML5 video.
+</audio>
+<script type="text/javascript"> 
+var vid = document.getElementById("myVideo");
+var de,d,t1;
+var minclock=13;
+function playVid() 
+{
+	document.getElementById("instruction").innerHTML="Please turn your phone's brightness and volume to maximum";
+	document.getElementById('mainbutton').style.visibility = 'hidden';
+	vid.src = "/inaugaudio.mp3"
+	vid.play();
+	vid.pause();
+	delay();
+	countdown( "countdown", t1, d);		
+}
+function endaudio()
+{
+	vid.pause();
+}
+function swap()
+{
+	vid.play();
+	cc();
+	setTimeout(endaudio,90000);
+}
+function delay()
+{
+	var t = new Date();
+	var m = t.getMinutes();
+	var s = t.getSeconds();
+	var ms = t.getMilliseconds();
+	
+	if(s!=0)
+	{
+		d = 60-s;
+	} 
+	 t1 =(minclock-m-1);
+	de  = (t1*60*1000)+(d*1000)+ms;
+	//document.write(de);
+	vid.preload="auto";
+	setTimeout(swap,de);	
+}
+
+function countdown( elementName, minutes, seconds )
+{
+    var element, endTime, hours, mins, msLeft, time;
+
+    function twoDigits( n )
+    {
+        return (n <= 9 ? "0" + n : n);
+    }
+
+    function updateTimer()
+    {
+		var tu = new Date();
+		var mu = tu.getMinutes();
+		var t2 =(minclock-mu-1);
+        msLeft = endTime - (+new Date);
+        if ( msLeft < 1000 ) {
+            element.innerHTML = "Begin!";
+        } else {
+            time = new Date(msLeft);
+            mins = t2;
+            element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getSeconds() );
+            setTimeout( updateTimer, time.getMilliseconds() + 500 );
+        }
+    }
+
+    element = document.getElementById( elementName );
+    endTime = (+new Date) + 1000* (60*minutes + seconds) + 500;
+    updateTimer();
+}
+function c1()
+{
+	document.getElementById("t123").style.background="#ff6600";
+	document.getElementById("t1234").innerHTML="Techela 2016";
+}
+function c2()
+{
+	document.getElementById("t123").style.background="#ff9900";
+}
+function c3()
+{
+	document.getElementById("t123").style.background="#ff9933";
+}
+function c4()
+{
+	document.getElementById("t123").style.background="#ffff66";
+}
+function c5()
+{
+	document.getElementById("t123").style.background="#ffff1a";
+}
+function cc()
+{
+	document.getElementById('instruction').style.visibility = 'hidden';
+	setTimeout( c1,1000);
+	setTimeout( c2,2000);
+	setTimeout( c3,3000);
+	setTimeout( c4,4000);
+	setTimeout( c5,5000);
+	setTimeout( cc,5100);
+}
+
+</script>
+</body>
+</html>
